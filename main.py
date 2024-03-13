@@ -4,7 +4,7 @@ import mediapipe as mp
 video=cv2.VideoCapture(1)
 
 mano = mp.solutions.hands
-Mano = mano.Hands(max_num_hands=4)
+Mano = mano.Hands(max_num_hands=1)
 mpDraw = mp.solutions.drawing_utils
 
 while True:
@@ -20,7 +20,7 @@ while True:
             mpDraw.draw_landmarks(img, puntos, mano.HAND_CONNECTIONS)
             for id, cord in enumerate(puntos.landmark):
                 cx,cy = int(cord.x*w), int(cord.y*h)
-                cv2.putText(img,str(id),(cx,cy+10),cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,0,0),2)
+                #cv2.putText(img,str(id),(cx,cy+10),cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,0,0),2)
                 nuevos_puntos.append((cx,cy))
                 #print(nuevos_puntos)
         
